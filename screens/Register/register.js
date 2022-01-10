@@ -1,9 +1,11 @@
 import React, { createContext } from "react";
 import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
+import axios from "axios";
 import styles from "./styles";
+import { asin } from "react-native-reanimated";
 
-const Register = ({navigation}) => {
+const Register = ({ navigation }) => {
   const [studentId, setStudentId] = React.useState(null);
   const [classId, setClassId] = React.useState(null);
   const [email, setEmail] = React.useState(null);
@@ -13,7 +15,33 @@ const Register = ({navigation}) => {
 
   React.useEffect(() => {
     console.log(studentId);
+
+    getData();
   }, [studentId]);
+
+  const getData = async () => {
+    const res = await axios.get(
+      "https://json-api-collection.herokuapp.com/allproduct/products"
+    );
+    console.log(res);
+  };
+
+  const onRegister = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/register"
+      );
+      console.log("data-Register: ", res);
+
+      navigation.navigate("Homepage");
+    } catch (error) {
+      if (error && error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.message);
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -47,7 +75,6 @@ const Register = ({navigation}) => {
         onChangeText={(text) => setName(text)}
         placeholder="Enter your Name"
       />
-      
 
       <TextInput
         style={styles.input}
@@ -65,17 +92,16 @@ const Register = ({navigation}) => {
 
       </Image> */}
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate("homepage")}>
-        <Text>Home</Text>
+      <Pressable style={styles.button} onPress={() => onRegister()}>
+        <Text>Register</Text>
       </Pressable>
-      
+
       {/* <Pressable style={styles.button} onPress={() =>{
         setButtonPresses(buttonPresses + 1)
       }}>       
         <Text style={styles.text}>Register</Text>
        
       </Pressable> */}
-
     </View>
   );
 };

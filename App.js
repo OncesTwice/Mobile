@@ -2,14 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import homepage from "./screens/Homepage/Home"
+import Homepage from "./screens/Homepage/home"
 import Register from "./screens/Register/register"
+import Search from "./screens/Search/search"
 
 
 export default createAppContainer(
   createStackNavigator(
-    { Register, homepage, },
-    { initialRouteName: "homepage" }
+    { Homepage, Register, Search },
+    { initialRouteName: "Homepage" }
   )
 );
 
