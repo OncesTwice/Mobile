@@ -16,7 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
       width: 280,
       marginTop: 20,
       borderWidth: 1,
-      borderRadius: "10px",
+      borderRadius: 10,
       padding: 10,
       backgroundColor: "white",
       color: "black",
@@ -30,11 +30,33 @@ import { LinearGradient } from 'expo-linear-gradient';
       // alignText: "center",
       alignItems: "center",
       padding: 10,
-      borderRadius: "10px",
+      borderRadius: 10,
       backgroundColor: "white",
       color: "black",
-    }
+    },
 
+      datetime: {
+        flexDirection: "row",
+        marginTop: 20,
+        alignItems: "center",
+        justifyContent: "space-around",
+        width:  280,
+        height: 40,
+        borborderRadius: 10,
+        
+      },
+
+      dateinput: {
+        width: "30%",
+        height: "40",
+        alignItems: "center",
+        padding: 10,
+        borborderRadius: 10,
+        backgroundColor: "white",
+        color: "black",
+        borderWidth: 1,
+
+      }
     // linearGradient: {
         
     // }

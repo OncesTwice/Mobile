@@ -11,7 +11,7 @@ import TimeTable from "./screens/TimeTable/timeTable"
 export default createAppContainer(
   createStackNavigator(
     { Homepage, Register, Search, TimeTable },
-    { initialRouteName: "Homepage" }
+    { initialRouteName: "Search" }
   )
 );
 

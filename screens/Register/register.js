@@ -18,6 +18,7 @@ const Register = ({ navigation }) => {
   const [email, setEmail] = React.useState(null);
   const [name, setName] = React.useState(null);
   const [password, setPassword] = React.useState(null);
+  const [confirmPassword, setconfirmPassword] = React.useState(null);
   const [buttonPresses, setButtonPresses] = React.useState(null);
 
   React.useEffect(() => {
@@ -38,13 +39,13 @@ const Register = ({ navigation }) => {
 
     // Update the formData object
    
-    await formData.append("BusinessCode", id);
-    await formData.append("BusinessCode", id);
-    await formData.append("BusinessCode", id);
-    await formData.append("BusinessCode", id);
-    await formData.append("BusinessCode", id);
-    await formData.append("BusinessCode", id);
-    await formData.append("Image", selectedFile);
+    await formData.append("student_id", studentId);
+    await formData.append("className", classId);
+    await formData.append("email", email);
+    await formData.append("name", name);
+    await formData.append("password", password);
+    await formData.append("confirmPassword", confirmPassword);
+    await formData.append("image", selectedFile);
 
 
     console.log(

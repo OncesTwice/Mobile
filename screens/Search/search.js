@@ -1,20 +1,28 @@
-import React, { createContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 
 const Search = ({navigation}) => {
   const [studentId, setStudentId] = React.useState(null);
-  const [classId, setClassId] = React.useState(null);
-  const [email, setEmail] = React.useState(null);
-  const [name, setName] = React.useState(null);
-  const [password, setPassword] = React.useState(null);
+  const [Day, setDay] = React.useState(null);
+  const [Month, setMonth] = React.useState(null);
+  const [Year, setYear] = React.useState(null);
   const [buttonPresses, setButtonPresses] = React.useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(studentId);
-  }, [studentId]);
+    var date = new Date (Year + '-' + Month + '-' + Day)
+    console.log(date);
 
+  }, []);
+
+  const Search = () => {
+    console.log(studentId);
+    var date = new Date (Year + '-' + Month + '-' + Day)
+    console.log(date);
+    navigation.navigate("TimeTable")
+  }
   return (
     <View style={styles.container}>
       {/* <LinearGradient
@@ -30,27 +38,41 @@ const Search = ({navigation}) => {
         onChangeText={(text) => setStudentId(text)}
         placeholder="Enter StudentId"
       />
-      
+      <View style={styles.datetime}>
       <TextInput
-        style={styles.input}
-        onChangeText={(text) => setClassId(text)}
-        placeholder="Enter ClassId"
+        style={styles.dateinput}
+        onChangeText={(text) => setDay(text)}
+        placeholder="Day"
       />
-   
 
       <TextInput
+        style={styles.dateinput}
+        onChangeText={(text) => setMonth(text)}
+        placeholder="Month"
+      />
+      <TextInput
+        style={styles.dateinput}
+        onChangeText={(text) => setYear(text)}
+        placeholder="Year"
+      />
+      </View>
+      
+      
+   
+
+      {/* <TextInput
         style={styles.input}
         onChangeText={(text) => setName(text)}
         placeholder="Enter your Name"
-      />
+      /> */}
       
 
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         onChangeText={(text) => setPassword(text)}
         placeholder="Enter your Password"
         secureTextEntry
-      />
+      /> */}
 
      
 
@@ -60,7 +82,7 @@ const Search = ({navigation}) => {
 
       </Image> */}
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate("TimeTable")}>
+      <Pressable style={styles.button} onPress={Search}>
         <Text>Search</Text>
       </Pressable>
       
