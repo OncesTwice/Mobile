@@ -1,9 +1,16 @@
 import React, { createContext } from "react";
-import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  View,
+  Text,
+  Image,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import styles from "./styles";
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   const [studentId, setStudentId] = React.useState(null);
   const [classId, setClassId] = React.useState(null);
   const [email, setEmail] = React.useState(null);
@@ -24,15 +31,25 @@ const Home = ({navigation}) => {
         >
           <Text style={styles.text} >VCL</Text>
       </LinearGradient> */}
-        
-      <Pressable style={styles.button} onPress={() => navigation.navigate("Register")}>
-      <Text>Register</Text>
-      </Pressable>
-      
-      <Pressable style={styles.button} onPress={() => navigation.navigate("Search")}>
-      <Text>Search</Text>
+
+      <Image
+        style={{ width: 400, height: 100, position: "absolute", top: 2 }}
+        source={require("../../assets/hutech.png")}
+      />
+
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate("Register")}
+      >
+        <Text>Register</Text>
       </Pressable>
 
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate("Search")}
+      >
+        <Text>Search</Text>
+      </Pressable>
     </View>
   );
 };

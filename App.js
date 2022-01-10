@@ -5,11 +5,12 @@ import { createStackNavigator } from "react-navigation-stack";
 import Homepage from "./screens/Homepage/home"
 import Register from "./screens/Register/register"
 import Search from "./screens/Search/search"
+import TimeTable from "./screens/TimeTable/timeTable"
 
 
 export default createAppContainer(
   createStackNavigator(
-    { Homepage, Register, Search },
+    { Homepage, Register, Search, TimeTable },
     { initialRouteName: "Homepage" }
   )
 );

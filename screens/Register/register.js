@@ -1,5 +1,12 @@
 import React, { createContext } from "react";
-import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  View,
+  Text,
+  Image,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import axios from "axios";
 import styles from "./styles";
@@ -27,19 +34,46 @@ const Register = ({ navigation }) => {
   };
 
   const onRegister = async () => {
+    const formData = await new FormData();
+
+    // Update the formData object
+   
+    await formData.append("BusinessCode", id);
+    await formData.append("BusinessCode", id);
+    await formData.append("BusinessCode", id);
+    await formData.append("BusinessCode", id);
+    await formData.append("BusinessCode", id);
+    await formData.append("BusinessCode", id);
+    await formData.append("Image", selectedFile);
+
+
+    console.log(
+      "🚀 ~ file: Register.js ~ line 72 ~ handleImage ~ selectedFile",
+      selectedFile
+    );
+
+    console.log(
+      "🚀 ~ file: Login.js ~ line 23 ~ handleSubmit ~ body",
+      formData
+    );
     try {
       const res = await axios.post(
-        "http://localhost:3000/register"
+        `http://localhost:3000/register`,
+        formData
       );
-      console.log("data-Register: ", res);
-
-      navigation.navigate("Homepage");
+      console.log("🚀 ~ file: Register.js ~ line 83 ~ handleImage ~ res", res);
     } catch (error) {
-      if (error && error.response) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.message);
-      }
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    }
+  };
+
+
+  const onImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      // setImage(URL.createObjectURL(e.target.files[0]));
+      setSelectedFile(e.target.files[0]);
     }
   };
 
@@ -80,13 +114,25 @@ const Register = ({ navigation }) => {
         style={styles.input}
         onChangeText={(text) => setPassword(text)}
         placeholder="Enter your Password"
+        // textContentType="password"
+        secureTextEntry
       />
 
       <TextInput
         style={styles.input}
         onChangeText={(text) => setPassword(text)}
         placeholder="Repeat your Password"
+        secureTextEntry
       />
+
+      <View style={styles.input}>
+        <input
+          onChange={onImageChange}
+          className="input_file"
+          type="file"
+          accept="image/*"
+        />
+      </View>
 
       {/* <Image>
 

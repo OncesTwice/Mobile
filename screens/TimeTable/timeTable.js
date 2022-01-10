@@ -1,9 +1,9 @@
 import React, { createContext } from "react";
 import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 import styles from "./styles";
 
-const Search = ({navigation}) => {
+const Search = ({ navigation }) => {
   const [studentId, setStudentId] = React.useState(null);
   const [classId, setClassId] = React.useState(null);
   const [email, setEmail] = React.useState(null);
@@ -25,52 +25,22 @@ const Search = ({navigation}) => {
           <Text style={styles.text} >VCL</Text>
       </LinearGradient> */}
 
-      <TextInput
-        style={styles.input}
-        onChangeText={(text) => setStudentId(text)}
-        placeholder="Enter StudentId"
-      />
       
-      <TextInput
-        style={styles.input}
-        onChangeText={(text) => setClassId(text)}
-        placeholder="Enter ClassId"
-      />
-   
-
-      <TextInput
-        style={styles.input}
-        onChangeText={(text) => setName(text)}
-        placeholder="Enter your Name"
-      />
-      
-
-      <TextInput
-        style={styles.input}
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Enter your Password"
-        secureTextEntry
-      />
-
      
 
-      
-
-      {/* <Image>
-
-      </Image> */}
-
-      <Pressable style={styles.button} onPress={() => navigation.navigate("TimeTable")}>
-        <Text>Search</Text>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate("TimeTable")}
+      >
+        <Text>Check in</Text>
       </Pressable>
-      
+
       {/* <Pressable style={styles.button} onPress={() =>{
         setButtonPresses(buttonPresses + 1)
       }}>       
         <Text style={styles.text}>Register</Text>
        
       </Pressable> */}
-
     </View>
   );
 };
